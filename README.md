@@ -20,3 +20,7 @@ node bot.js
 ## you'll need this
 
 [this](https://discordjs.guide/#before-you-begin)
+
+## wanna help?
+
+fork the repo, make your changes, open a PR and at least try and tell me what its for, ill probs just add it. 
