@@ -5,6 +5,6 @@ module.exports = {
 		.setName('stop')
 		.setDescription('stops'),
 	async execute(interaction) {
-		// nothing;
-	},
+        await interaction.reply('stopping...');
+    },
 };
