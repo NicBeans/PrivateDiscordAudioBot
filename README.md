@@ -1,4 +1,4 @@
-# PrivateDiscordAudioBot
+# PrivateDiscordBot
 
 This is a bot for me and the boyes. 
 
