@@ -2,8 +2,9 @@ require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, GatewayIntentBits, Collection, Events  } = require('discord.js');
-const { createAudioPlayer, NoSubscriberBehavior, AudioPlayerStatus, createAudioResource, joinVoiceChannel  } = require('@discordjs/voice');
+const { createAudioPlayer, getVoiceConnection, AudioPlayerStatus, createAudioResource, joinVoiceChannel  } = require('@discordjs/voice');
 const { connect } = require('node:http2');
+const { get } = require('node:http');
 
 const { TOKEN, VOICE_CHANNEL_ID, GUILD_ID, TEXT_CHANNEL_ID, VOICE_CHANNEL_ID_WORK, CLIENT_ID } = process.env;
 
@@ -62,7 +63,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
 	const command = interaction.client.commands.get(interaction.commandName);
-	console.log(command);
+	//console.log(command);
 
 	if (!command) {
 		console.error(`No command matching ${interaction.commandName} was found.`);
@@ -88,7 +89,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-client.on('interactionCreate', async (interaction) => {
+client.on(Events.InteractionCreate, async interaction => {
 	if (interaction.isChatInputCommand()) {
 		if (interaction.commandName === 'play') {
 			const voiceChannel = interaction.options.getChannel('channel');
@@ -96,7 +97,7 @@ client.on('interactionCreate', async (interaction) => {
 			try {
 			const resource = createAudioResource('bigben.mp3');
 			const player = createAudioPlayer()
-			const connection = await joinVoiceChannel({
+			connection = await joinVoiceChannel({
 				channelId: voiceChannel.id,
 				guildId: guild.id,
 				adapterCreator: interaction.guild.voiceAdapterCreator
@@ -105,12 +106,19 @@ client.on('interactionCreate', async (interaction) => {
 			connection.subscribe(player);
 			// console.log(voiceChannel);
 			// console.log(guild);
-		} catch(error) {
+			} catch(error) {
 			console.log(error);
-		}
+			}
 		
+		}
+		}
+		if (interaction.commandName === 'stop') {
+			if (connection) {
+				connection.destroy();
+			}
+		}
 	}
-}}});
+});
 			
 
 
