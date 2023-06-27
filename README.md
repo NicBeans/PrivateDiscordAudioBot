@@ -17,6 +17,6 @@ node deploy-commands.js
 node bot.js
 ```
 
-## youll need this
+## you'll need this
 
 [this](https://discordjs.guide/#before-you-begin)
