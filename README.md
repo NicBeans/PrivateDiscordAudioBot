@@ -2,8 +2,10 @@
 This is a bot for me and the boyes. 
 
 dont fight me, use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating), use it to install node 16.9.0 and let it do the rest.
+
 then:
 clone repo
+
 run:
 ```
 npm install
