@@ -6,6 +6,6 @@ module.exports = {
 		.setDescription('plays a song')
         .addChannelOption(option => option.setName('channel').setDescription('The voice channel to join').setRequired(true).addChannelTypes(ChannelType.GuildVoice)),
 	async execute(interaction) {
-		// await interaction.reply('Pong!');
+		await interaction.reply('playing...');
 	},
 };
