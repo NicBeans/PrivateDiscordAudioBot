@@ -1,5 +1,5 @@
 # PrivateDiscordBot
-
+#Bot is deprecated. See my git for alternatives.
 This is a bot for me and the boyes. 
 
 
